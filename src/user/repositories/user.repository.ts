@@ -16,4 +16,11 @@ export class UserRepository {
 	async getUserById(id: number) {
 		return await this.userModel.findByPk(id);
 	}
+
+	async getUserByEmail(email: string): Promise<UserModel | null> {
+		return await this.userModel.findOne({
+			rejectOnEmpty: undefined,
+			where: { email: email },
+		});
+	}
 }

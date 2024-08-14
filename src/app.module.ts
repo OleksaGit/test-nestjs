@@ -1,14 +1,17 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
-import { AppService } from './app.service';
 import { UsersModule } from './user/users.module';
 import { SequelizeModule } from '@nestjs/sequelize';
 import { ConfigModule, ConfigService } from '@nestjs/config';
+import { AuthModule } from './auth/auth.module';
 import UserModel from './db-models/user.model';
+import { PassportModule } from '@nestjs/passport';
 
 @Module({
 	imports: [
 		UsersModule,
+		AuthModule,
+		PassportModule,
 		ConfigModule.forRoot({
 			cache: true,
 			isGlobal: true,
@@ -31,6 +34,6 @@ import UserModel from './db-models/user.model';
 		}),
 	],
 	controllers: [AppController],
-	providers: [AppService],
+	providers: [UsersModule, AuthModule],
 })
 export class AppModule {}

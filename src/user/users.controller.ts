@@ -9,7 +9,7 @@ import {
 	ValidationPipe,
 } from '@nestjs/common';
 import { UsersService } from './users.service';
-import { CreateUserDto } from './dto/create-user.dto';
+import { AddUserDto } from './dto/add-user.dto';
 
 @Controller('users')
 export class UsersController {
@@ -17,11 +17,11 @@ export class UsersController {
 
 	@UsePipes(new ValidationPipe())
 	@Post('create-user')
-	async createUser(@Body() dto: CreateUserDto) {
-		return await this.usersService.createUser(dto);
+	async createUser(@Body() dto: AddUserDto) {
+		return await this.usersService.addUser(dto);
 	}
 
-	@Get('user/:id')
+	@Get('get-user/:id')
 	async getUser(@Param('id', ParseIntPipe) userId: number) {
 		return await this.usersService.getUser(userId);
 	}
