@@ -1,6 +1,19 @@
 ## Description
 
-Test task
+###Test task
+
+Build simple server-side app according to the requirements:
+- framework NestJS
+- nodejs version v20.10.0
+- mysql server
+- orm: Sequelize
+  The application should be a simple REST API (sending data via a POST request, saving it in the
+  database and outputting it to the console as logs, receiving data via a GET request). Use the
+  following addresses:
+  /api/v1/add-user
+  /api/v1/get-user/:id
+  You can use random data (name, email, phone). Create a table with them in the database. It is
+  also necessary to organize authorization of requests using the JWT token in the HTTP header.
 
 ## Installation
 
