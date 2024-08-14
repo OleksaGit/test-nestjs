@@ -9,11 +9,11 @@ export class UserRepository {
 		@InjectModel(UserModel) private readonly userModel: typeof UserModel,
 	) {}
 
-	async createUser(data: UserEntity) {
-		await this.userModel.create({ ...data });
+	async createUser(data: UserEntity): Promise<UserModel> {
+		return await this.userModel.create({ ...data });
 	}
 
-	async getUserById(id: number) {
+	async getUserById(id: number): Promise<UserModel | null> {
 		return await this.userModel.findByPk(id);
 	}
 

@@ -19,11 +19,27 @@ export class UserEntity implements IUser {
 		this.passwordHash = user.passwordHash;
 	}
 
+	getPublicUserData(): Omit<IUser, 'password' | 'passwordHash'> {
+		return {
+			userId: this.userId,
+			firstName: this.firstName,
+			secondName: this.secondName,
+			email: this.email,
+		}
+	}
+
 	getUserId(): number {
 		if (!this.userId) {
 			throw new InternalServerErrorException('Not found user id');
 		}
 		return this.userId;
+	}
+
+	getUserEmail(): string {
+		if (!this.email) {
+			throw new InternalServerErrorException('Not found email');
+		}
+		return this.email;
 	}
 
 	async setPassword(password: string): Promise<this> {

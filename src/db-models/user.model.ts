@@ -14,10 +14,10 @@ export default class UserModel extends Model {
 	@Column({ field: 'user_id', type: DataType.INTEGER })
 	userId: number;
 
-	@Column({ field: 'first_name', allowNull: true, type: DataType.STRING })
+	@Column({ field: 'first_name', allowNull: false, type: DataType.STRING })
 	firstName: string;
 
-	@Column({ field: 'second_name', allowNull: true, type: DataType.STRING })
+	@Column({ field: 'second_name', allowNull: false, type: DataType.STRING })
 	secondName: string;
 
 	@Column({ field: 'email', allowNull: false, type: DataType.STRING })
